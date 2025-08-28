@@ -1,6 +1,4 @@
-Great, Venkatesh 👍 I’ll draft a **professional README.md introduction** for your Playwright 30-Day Training Plan that looks impressive for participants and appealing for anyone who comes across it. You can place this at the top of your repo before the detailed day-wise plan.
 
----
 
 # 🚀 Playwright Mastery in 30 Days – 60 Hours Hands-on Training
 
