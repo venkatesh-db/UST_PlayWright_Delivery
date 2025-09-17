@@ -62,7 +62,6 @@ class  Post  // extends User
    constructor( ids:number ,c:string , ct:Date  )
    {
 
-
     console.log("constructor post ")
 
    //  super(1 , "venkatesh","venkatesh.db@gmail.com") // call user constructore 
@@ -73,11 +72,15 @@ class  Post  // extends User
      this.content = c
      this.createdat =ct
 
+      Post.id = Post.id +1   // new content is crreated it will increment value of 
+
    }
 
    static nextid(){
+
     return this.id++; // count of current post 
-   }
+   
+  }
 
 
     addcomment(commnet:Commnet )   // method depeendcny with class Commnet
@@ -156,12 +159,12 @@ class Like
 */
 
 
-const venkatesh = new User(1,"venkatesh","venkatesh.db@gmail.com")
+const venkatesh = new User(1,"venkatesh","venkatesh.db@gmail.com")  // When object is created is constructor eis invoked 
 
 const akash=venkatesh.createpost(" all are loving typescript -ust data smiles")
 
-akash.addcomment(new Commnet(2,"nice post-akhil",))  // akhil is comments 
+akash.addcomment(new Commnet(2,"nice post-akhil",))  //    akhil is comments 
 
-akash.addlike(new Like(1,"manisha"))                  // manisha object 
+akash.addlike(new Like(1,"manisha"))                  //    manisha object 
 
 console.log(akash)
