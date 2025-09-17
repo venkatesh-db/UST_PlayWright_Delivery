@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bus Search Demo</title>
+</head>
+<body>
+  <h2>Simple Bus Search</h2>
+
+  <label for="src">From:</label>
+  <input id="src" placeholder="From">
+
+  <label for="dest">To:</label>
+  <input id="dest" placeholder="To">
+
+  <label for="date">Date:</label>
+  <input id="date" type="date">
+
+  <button id="search_btn">Search</button>
+
+  <p id="result" style="color: green; font-weight: bold;"></p>
+
+  <script>
+    document.getElementById("search_btn").addEventListener("click", () => {
+      const src = document.getElementById("src").value;
+      const dest = document.getElementById("dest").value;
+      const date = document.getElementById("date").value;
+
+      if (src && dest && date) {
+        document.getElementById("result").textContent = "Search successful!";
+      } else {
+        document.getElementById("result").textContent = "Please fill all fields.";
+      }
+    });
+  </script>
+</body>
+</html>
