@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playwright Locator Demo</title>
+</head>
+<body>
+  <h1>Welcome to Locator Demo</h1>
+
+  <!-- getByText -->
+  <p>Click the button below to continue</p>
+  <button id="continue-btn">Continue</button>
+
+  <!-- getByRole -->
+  <nav>
+    <a href="#home" role="link">Home</a>
+    <a href="#about" role="link">About</a>
+    <a href="#contact" role="link">Contact</a>
+  </nav>
+
+  <!-- getByLabel -->
+  <form>
+    <label for="username">Username:</label>
+    <input id="username" type="text" name="username" />
+
+    <label for="password">Password:</label>
+    <input id="password" type="password" name="password" />
+
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- CSS Selector -->
+  <div class="product-list">
+    <div class="product" data-id="101">Laptop</div>
+    <div class="product" data-id="102">Mobile</div>
+    <div class="product" data-id="103">Headphones</div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playwright Demo: Inputs & Text</title>
+</head>
+<body>
+  <h1 id="heading">Playwright Locator & Text Demo</h1>
+
+  <!-- Text input -->
+  <div>
+    <label for="username">Username:</label>
+    <input id="username" type="text" />
+  </div>
+
+  <!-- Button -->
+  <div>
+    <button id="submitBtn">Submit</button>
+  </div>
+
+  <!-- ✅ Fixed Checkboxes (no nesting, each has its own label) -->
+  <div>
+    <label for="option1">Option 1</label>
+    <input type="checkbox" id="option1" value="Option 1">
+
+    <label for="option2">Option 2</label>
+    <input type="checkbox" id="option2" value="Option 2">
+  </div>
+
+  <!-- Dropdown -->
+  <div>
+    <label for="fruits">Choose a fruit:</label>
+    <select id="fruits">
+      <option value="apple">Apple</option>
+      <option value="banana">Banana</option>
+      <option value="cherry">Cherry</option>
+    </select>
+  </div>
+
+  <!-- Text for innerText vs textContent -->
+  <div id="text-demo">
+    <p id="innerText-demo">Line 1<br>Line 2</p>
+    <p id="textContent-demo">   Extra spaces and hidden span 
+      <span style="display:none;">HIDDEN</span>
+    </p>
+  </div>
+
+  <!-- Multiple items for allInnerTexts vs allTextContents -->
+  <ul id="items">
+    <li> Item A </li>
+    <li> Item B 
+      <span style="display:none;">(hidden)</span>
+    </li>
+    <li> Item C </li>
+  </ul>
+</body>
+</html>

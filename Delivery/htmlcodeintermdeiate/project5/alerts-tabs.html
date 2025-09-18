@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playwright Alerts & Tabs Demo</title>
+  <script>
+    function showAlert() {
+      alert("This is an alert!");
+    }
+
+    function showConfirm() {
+      const result = confirm("Do you want to continue?");
+      document.getElementById("confirm-result").innerText = "Confirm result: " + result;
+    }
+
+    function showPrompt() {
+      const value = prompt("Enter your name:", "John Doe");
+      document.getElementById("prompt-result").innerText = "Prompt result: " + value;
+    }
+  </script>
+</head>
+<body>
+  <h1>Playwright Alerts & Tabs Demo</h1>
+
+  <!-- Alert -->
+  <button id="alert-btn" onclick="showAlert()">Show Alert</button>
+
+  <!-- Confirm -->
+  <button id="confirm-btn" onclick="showConfirm()">Show Confirm</button>
+  <p id="confirm-result"></p>
+
+  <!-- Prompt -->
+  <button id="prompt-btn" onclick="showPrompt()">Show Prompt</button>
+  <p id="prompt-result"></p>
+
+  <!-- New tab -->
+  <a href="newtab.html" target="_blank" id="new-tab-link">Open New Tab</a>
+</body>
+</html>
