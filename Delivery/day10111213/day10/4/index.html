@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Playwright Demo: Tables & Tabs</title>
+  <script>
+    function addRow() {
+      const table = document.getElementById("dynamic-table");
+      const row = table.insertRow();
+      const c1 = row.insertCell(0);
+      const c2 = row.insertCell(1);
+      c1.innerText = "New Item " + (table.rows.length - 1);
+      c2.innerText = Math.floor(Math.random() * 100);
+    }
+  </script>
+</head>
+<body>
+  <h1>Static & Dynamic Tables</h1>
+
+  <!-- Static Table -->
+  <h2>Static Table</h2>
+  <table id="static-table" border="1">
+    <tr><th>Product</th><th>Price</th></tr>
+    <tr><td>Laptop</td><td>1000</td></tr>
+    <tr><td>Phone</td><td>500</td></tr>
+    <tr><td>Tablet</td><td>300</td></tr>
+  </table>
+
+  <!-- Dynamic Table -->
+  <h2>Dynamic Table</h2>
+  <button onclick="addRow()">Add Row</button>
+  <table id="dynamic-table" border="1">
+    <tr><th>Item</th><th>Value</th></tr>
+  </table>
+
+  <!-- Multi-tab link -->
+  <h2>Multi-tab Demo</h2>
+  <a href="newtab.html" target="_blank" id="new-tab-link">Open New Tab</a>
+
+  <!-- Simple Login for session demo -->
+  <h2>Login</h2>
+  <form id="login-form">
+    <label for="username">Username:</label>
+    <input type="text" id="username"><br><br>
+    <label for="password">Password:</label>
+    <input type="password" id="password"><br><br>
+    <button type="button" onclick="login()">Login</button>
+  </form>
+  <p id="login-message"></p>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (user === "admin" && pass === "1234") {
+        document.getElementById("login-message").innerText = "Login Successful!";
+      } else {
+        document.getElementById("login-message").innerText = "Invalid Credentials";
+      }
+    }
+  </script>
+</body>
+</html>

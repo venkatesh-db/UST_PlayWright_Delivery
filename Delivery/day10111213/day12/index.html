@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Playwright Demo — Iframes & Advanced Actions</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .box { border: 1px solid #ddd; padding: 16px; margin: 12px 0; }
+    #hover-box { width: 200px; height: 80px; background: #f0f8ff; display:flex; align-items:center; justify-content:center; cursor:default; position:relative; }
+    .tooltip { display:none; position:absolute; top:100%; left:0; background:#333; color:#fff; padding:6px; border-radius:4px; margin-top:6px; white-space:nowrap; }
+    #hover-box:hover .tooltip { display:block; }
+    #drag-item { width:100px; height:40px; background:#8fbcd4; display:flex; align-items:center; justify-content:center; cursor:grab; user-select:none; }
+    #drop-zone { width:150px; height:80px; border:2px dashed #999; display:flex; align-items:center; justify-content:center; }
+    #right-click-area { width:200px; padding:12px; border:1px solid #ccc; background:#fff9e6; }
+    #dblclick-btn { padding:8px 12px; }
+  </style>
+  <script>
+    // right-click handler: show message (and prevent browser context menu)
+    function setupContext() {
+      const area = document.getElementById('right-click-area');
+      area.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        document.getElementById('context-result').innerText = 'Right-click detected';
+      });
+    }
+
+    // dblclick handler
+    function setupDbl() {
+      const btn = document.getElementById('dblclick-btn');
+      btn.addEventListener('dblclick', () => {
+        document.getElementById('dbl-result').innerText = 'Double-clicked!';
+      });
+    }
+
+    // drag & drop handlers (HTML5 style)
+    function setupDragDrop() {
+      const drag = document.getElementById('drag-item');
+      const drop = document.getElementById('drop-zone');
+
+      drag.setAttribute('draggable', 'true');
+      drag.addEventListener('dragstart', (ev) => {
+        ev.dataTransfer.setData('text/plain', 'dragged'); // some browsers require this
+      });
+
+      drop.addEventListener('dragover', (ev) => {
+        ev.preventDefault();
+        drop.style.background = '#eef';
+      });
+
+      drop.addEventListener('dragleave', (ev) => {
+        drop.style.background = '';
+      });
+
+      drop.addEventListener('drop', (ev) => {
+        ev.preventDefault();
+        const data = ev.dataTransfer.getData('text/plain');
+        drop.style.background = '';
+        document.getElementById('drop-result').innerText = 'Dropped: ' + data;
+      });
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setupContext();
+      setupDbl();
+      setupDragDrop();
+    });
+  </script>
+</head>
+<body>
+  <h1>Playwright Demo: Iframes & Advanced Actions</h1>
+
+  <!-- Iframe section -->
+  <section class="box">
+    <h2>Iframe: switch context & interact inside</h2>
+    <iframe id="my-iframe" src="iframe-content.html" width="600" height="160" title="demo frame"></iframe>
+    <p class="small">The iframe contains a button and an input. Clicking the iframe button updates the iframe text.</p>
+  </section>
+
+  <!-- Hover -->
+  <section class="box">
+    <h2>Hover demo</h2>
+    <div id="hover-box">
+      Hover me
+      <div class="tooltip" id="hover-tooltip">Tooltip shown on hover</div>
+    </div>
+  </section>
+
+  <!-- Right-click -->
+  <section class="box">
+    <h2>Right-click (context menu) demo</h2>
+    <div id="right-click-area">Right-click inside this box</div>
+    <p id="context-result" class="small"></p>
+  </section>
+
+  <!-- Double click -->
+  <section class="box">
+    <h2>Double-click demo</h2>
+    <button id="dblclick-btn">Double-click me</button>
+    <p id="dbl-result" class="small"></p>
+  </section>
+
+  <!-- Drag & Drop -->
+  <section class="box">
+    <h2>Drag & Drop demo</h2>
+    <div style="display:flex; gap:20px; align-items:center;">
+      <div id="drag-item">Drag me</div>
+      <div id="drop-zone">Drop here</div>
+    </div>
+    <p id="drop-result" class="small"></p>
+  </section>
+</body>
+</html>
