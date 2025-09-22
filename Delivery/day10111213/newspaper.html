@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Times - Demo</title>
+  <style>
+    table, th, td { border: 1px solid black; border-collapse: collapse; padding: 6px; }
+    #shadow-host { border: 1px solid #444; padding: 10px; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Daily Times</h1>
+  <p>Breaking News: <strong>Playwright makes automation easy!</strong></p>
+
+  <!-- Login Form -->
+  <form id="loginForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username"><br><br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password"><br><br>
+
+    <label><input type="checkbox" id="remember"> Remember me</label><br><br>
+
+    <label for="category">Select Category:</label>
+    <select id="category">
+      <option>Sports</option>
+      <option>Politics</option>
+      <option>Technology</option>
+    </select><br><br>
+
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- News Stats Table -->
+  <h2>Top News Stats</h2>
+  <table id="newsTable">
+    <tr><th>Category</th><th>Articles</th></tr>
+    <tr><td>Sports</td><td>10</td></tr>
+    <tr><td>Politics</td><td>7</td></tr>
+    <tr><td>Technology</td><td>15</td></tr>
+  </table>
+
+  <!-- External Link -->
+  <a href="https://example.com" target="_blank" id="extLink">Read More</a>
+
+  <!-- iFrame -->
+  <h3>Sponsored Ad</h3>
+  <iframe id="adFrame" srcdoc="<p>Buy 1 Get 1 Free!</p>"></iframe>
+
+  <!-- Shadow DOM -->
+  <div id="shadow-host"></div>
+  <script>
+    const host = document.querySelector("#shadow-host");
+    const shadow = host.attachShadow({ mode: "open" });
+    const btn = document.createElement("button");
+    btn.textContent = "Subscribe Now";
+    shadow.appendChild(btn);
+  </script>
+
+  <!-- File Upload -->
+  <h3>Upload Article</h3>
+  <input type="file" id="fileUpload">
+</body>
+</html>
