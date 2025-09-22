@@ -1,0 +1,31 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Iframe Content</title>
+  <style>body{font-family:Arial, sans-serif; padding:12px;}</style>
+  <script>
+    function insideClick() {
+      document.getElementById('frame-result').innerText = 'Frame button clicked';
+    }
+    function setName() {
+      const v = document.getElementById('name-input').value;
+      document.getElementById('name-result').innerText = 'Name: ' + v;
+    }
+  </script>
+</head>
+<body>
+  <h3>Inside Iframe</h3>
+  <button id="frame-btn" onclick="insideClick()">Inside Frame Button</button>
+  <p id="frame-result" class="small"></p>
+
+  <div style="margin-top:8px;">
+    <label for="name-input">Enter name:</label>
+    <input id="name-input" />
+    <button id="set-name-btn" onclick="setName()">Set</button>
+    <p id="name-result" class="small"></p>
+  </div>
+</body>
+</html>
