@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Advanced CSS Selectors Demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 20px; }
+    section { margin-bottom: 32px; }
+    h2 { margin-top: 0; }
+    .box {
+      padding: 8px 12px;
+      margin: 6px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      display: inline-block;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .box:hover {
+      outline: 2px solid #000;
+      background: #fff;
+    }
+    .grid { display: flex; gap: 8px; flex-wrap: wrap; }
+    .note { color: #555; font-size: 0.9rem; margin-top: 6px; }
+
+    /* ✨ Color by section */
+    #attributes .box { background: #e3f2fd; }     /* light blue */
+    #pseudo-classes .box { background: #fce4ec; } /* light pink */
+    #combinators .box { background: #e8f5e9; }    /* light green */
+    #relational .box { background: #fff8e1; }     /* light yellow */
+    #has .box { background: #ede7f6; }            /* light purple */
+  </style>
+</head>
+<body>
+  <h1>Advanced CSS Selectors — Demo</h1>
+
+  <section id="attributes">
+    <h2>1. Attribute selectors</h2>
+    <div class="grid">
+      <div class="box" data-role="admin">Admin (data-role="admin")</div>
+      <div class="box" data-role="user">User (data-role="user")</div>
+      <div class="box" data-role="guest">Guest (data-role="guest")</div>
+      <div class="box" data-id="id-123">Has data-id</div>
+      <div class="box" data-id="user-456">data-id starts-with user-</div>
+    </div>
+    <div class="note">
+      Examples: <code>[data-role="admin"]</code>, <code>[data-id^="user-"]</code>
+    </div>
+  </section>
+
+  <section id="pseudo-classes">
+    <h2>2. Pseudo-classes</h2>
+    <ol>
+      <li class="box">One</li>
+      <li class="box special">Two</li>
+      <li class="box">Three</li>
+      <li class="box special">Four</li>
+      <li class="box">Five</li>
+    </ol>
+    <div class="note">
+      Examples: <code>li:nth-child(odd)</code>, <code>li.special:not(:first-child)</code>
+    </div>
+  </section>
+
+  <section id="combinators">
+    <h2>3. Combinators</h2>
+    <div class="box parent">
+      Parent
+      <div class="box child">Direct child</div>
+      <div>
+        <div class="box descendant">Descendant (not direct)</div>
+      </div>
+      <div class="box sibling-a">Sibling A</div>
+      <div class="box sibling-b">Sibling B (adjacent to A?)</div>
+    </div>
+    <div class="note">
+      Examples: <code>.parent > .child</code>, <code>.parent .descendant</code>, 
+      <code>.sibling-a + .sibling-b</code>, <code>.sibling-a ~ .sibling-b</code>
+    </div>
+  </section>
+
+  <section id="relational">
+    <h2>4. Relational & grouping selectors</h2>
+    <div class="grid">
+      <button class="box btn primary">Primary</button>
+      <button class="box btn">Secondary</button>
+      <a class="box link" href="#">Link</a>
+      <input class="box" placeholder="input text" value="hello" />
+      <div class="box">Normal div</div>
+    </div>
+    <div class="note">
+      Examples: <code>button.btn.primary</code>, <code>.btn, .link</code>, <code>:is(button, a)</code>
+    </div>
+  </section>
+
+  <section id="has">
+    <h2>5. :has() powerful relational selector</h2>
+    <div class="grid">
+      <div class="box card">
+        <h3>Card A</h3>
+        <p class="desc">Has description</p>
+      </div>
+      <div class="box card">
+        <h3>Card B</h3>
+      </div>
+    </div>
+    <div class="note">
+      Example: <code>div.card:has(.desc)</code> selects only Card A
+    </div>
+  </section>
+</body>
+</html>
